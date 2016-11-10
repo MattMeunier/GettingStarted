@@ -17,7 +17,7 @@ namespace SayMyName
             // Saisie année de naissance par l'utilisateur
             string year = Console.ReadLine();
 
-            // Calcule l'age de l'utilisateur et affiche
+            // Calcule l'age de l'utilisateur et affiche message conditionné
             int yearNum = int.Parse(year);
             int age = DateTime.Now.Year - yearNum;
             string mess;
