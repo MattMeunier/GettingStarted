@@ -29,6 +29,7 @@ namespace NombreMystereConsole
             num = new Random().Next(0, 20);
             iterator = 0;
             Console.WriteLine(welcome);
+
             inputInt = play();
             test(inputInt, num);
             retry();
