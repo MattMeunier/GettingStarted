@@ -13,36 +13,51 @@ namespace NombreMystereConsole
         static string messSup = "Plus grand";
         static string messInf = "Plus petit";
         static string messWin = "Bravo, tu as trouvé en ";
-        static int iterator = 1;
-        static int input;
+        static string messNewGame = "Nouvelle partie ? o/n";
+        static int iterator;
         static int num;
+        static int inputInt;
 
         static void Main(string[] args)
         {
-            num = new Random().Next(0, 20);
             newGame();
             Console.ReadKey();
         }
 
         static private void newGame()
         {
-           input = picked();
-           test(input, num);
+            num = new Random().Next(0, 20);
+            iterator = 0;
+            Console.WriteLine(welcome);
+            inputInt = play();
+            test(inputInt, num);
+            retry();
         }
 
-        static private int picked()
+        static private int play()
         {
-            Console.WriteLine(welcome);
+            string inputString;
+            inputString = picked();
+            inputInt = verify(inputString);
+            return inputInt;
+        }
 
-            int input;
-            bool isNum = int.TryParse(Console.ReadLine(), out input);
+        static private string picked()
+        {
+            iterator++;
+            string input = Console.ReadLine();
+            return input;
+        }
 
-            while (isNum == false || input>20)
+        static private int verify(string input)
+        {
+            int inputOut;
+            while (int.TryParse(input, out inputOut) == false)
             {
                 Console.WriteLine(wrongInput);
-                newGame();
+                input = picked();
             }
-            return input;
+            return inputOut;
         }
 
         static private void test(int input, int num)
@@ -56,12 +71,27 @@ namespace NombreMystereConsole
                 else
                 {
                     Console.WriteLine(messSup);
-
                 }
-                iterator++;
-                input = picked();
+                input = play();
             }
             Console.WriteLine(messWin + iterator + " coups");
+        }
+
+        private static void retry()
+        {
+            Console.WriteLine(messNewGame);
+            switch (Console.ReadLine())
+            {
+                case "o":
+                    newGame();
+                    break;
+                case "n":
+                    Environment.Exit(1);
+                    break;
+                default:
+                    retry();
+                    break;
+            }
         }
     }
 }
