@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NombreMystereWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="351.172" Width="496.444">
+        Title="Le Nombre Mystère" Height="351.172" Width="794.497" Loaded="Window_Loaded">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="19" Margin="144,109,0,0" VerticalAlignment="Top" Width="197"/>
-        <Button x:Name="button_Copy" Content="Button" HorizontalAlignment="Left" Height="19" Margin="144,133,0,0" VerticalAlignment="Top" Width="197"/>
+        <StackPanel>
+            <TextBlock x:Name="mw_tbx_title" TextWrapping="Wrap" Text="J'ai choisi un nombre entre 1 et 20, trouve-le !"/>
+            <TextBlock x:Name="mw_tbk_result" TextWrapping="Wrap" Text="" />
+            <TextBlock x:Name="mw_tbx_tries" TextWrapping="Wrap" Text="Nombre d'essai : "/>
+            <TextBox x:Name="mw_tbx_input" Height="23" TextWrapping="Wrap" Text=""/>
+            <Button x:Name="mw_bt_valid" Content="Valid" Click="mw_bt_valid_Click"/>
+            <Button x:Name="mw_bt_newGame" Content="New Game" Click="mw_bt_newGame_Click"/>
+        </StackPanel>
 
     </Grid>
 </Window>
