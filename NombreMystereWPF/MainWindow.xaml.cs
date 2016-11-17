@@ -64,7 +64,7 @@ namespace NombreMystereWPF
 
         private void newGame()
         {
-            num = new Random().Next(0, 20);
+            num = new Random().Next(1, 20);
             mw_tbk_result.Text = string.Empty;
             mw_tbx_input.Text = string.Empty;
             iterator = 0;
@@ -74,7 +74,7 @@ namespace NombreMystereWPF
         private bool verifyInput(string input)
         {
             bool verify = true;
-            if (int.TryParse(input, out inputOut) == false || inputOut > 20 || inputOut < 0)
+            if (int.TryParse(input, out inputOut) == false || inputOut > 20 || inputOut < 1)
             {
                 verify = false;
                 mw_tbk_result.Text = wrongInput;

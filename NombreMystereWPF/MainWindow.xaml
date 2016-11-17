@@ -155,7 +155,7 @@
                     </TextBlock>
                 </StackPanel>
                 <Ellipse Opacity="0.25" Grid.Column="1" Width="140" Fill="White" HorizontalAlignment="Left" Margin="15,3,0,3"/>
-                <TextBox x:Name="mw_tbx_input" TextWrapping="Wrap" Text="" Grid.Column="1" Background="{x:Null}" FontWeight="Bold" FontSize="70" RenderTransformOrigin="0.516,0.376" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextAlignment="Center" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" Width="100" MaxHeight="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="37,0,0,25">
+                <TextBox x:Name="mw_tbx_input" TextWrapping="Wrap" Text="" Grid.Column="1" Background="{x:Null}" FontWeight="Bold" FontSize="40" RenderTransformOrigin="0.516,0.376" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextAlignment="Center" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" Width="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="37,0,0,25" Height="90">
                     <TextBox.Foreground>
                         <SolidColorBrush Color="{DynamicResource blanc}"/>
                     </TextBox.Foreground>
