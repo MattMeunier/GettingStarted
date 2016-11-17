@@ -5,15 +5,175 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NombreMystereWPF"
         mc:Ignorable="d"
-        Title="Le Nombre Mystère" Height="351.172" Width="794.497" Loaded="Window_Loaded">
-    <Grid>
+        Title="Le Nombre Mystère" Height="525" Width="525" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Resources>
+        <Color x:Key="violetPale">#FFB39DF7</Color>
+        <Color x:Key="blanc">White</Color>
+        <Color x:Key="jaune">#FFF9EB60</Color>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="tpl_bt_valid" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="tplValid_grid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="101*"/>
+                                <ColumnDefinition Width="100*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="tplValid_elp" Fill="White" Margin="0,0,0.498,0" Grid.Column="1" Width="90"/>
+                            <ContentPresenter x:Name="tplValid_cp" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                            <TextBlock x:Name="textBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="&#xE001;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Grid.Column="1" Grid.ColumnSpan="13" FontSize="90">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource violetPale}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="tpl_bt_newGame" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="tplNewGame_grid" Height="80" Width="Auto" Margin="100,0,80,0" HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="101*"/>
+                                <ColumnDefinition Width="100*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="tplNewGame_elp" Margin="0,0,0.498,0" Grid.Column="1" Width="70" Height="70" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <SolidColorBrush Color="{DynamicResource jaune}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <ContentPresenter x:Name="tplNewGame_cp" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                            <TextBlock x:Name="tplNewGame_tbk" HorizontalAlignment="Center" TextWrapping="Wrap" Text="&#xE149;" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Grid.Column="1" Grid.ColumnSpan="1" FontSize="50" Width="50" Height="50" RenderTransformOrigin="1.03,0.857">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource blanc}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="mw_grid_base" Background="#FF90DCFF">
         <StackPanel>
-            <TextBlock x:Name="mw_tbx_title" TextWrapping="Wrap" Text="J'ai choisi un nombre entre 1 et 20, trouve-le !"/>
-            <TextBlock x:Name="mw_tbk_result" TextWrapping="Wrap" Text="" />
-            <TextBlock x:Name="mw_tbx_tries" TextWrapping="Wrap" Text="Nombre d'essai : "/>
-            <TextBox x:Name="mw_tbx_input" Height="23" TextWrapping="Wrap" Text=""/>
-            <Button x:Name="mw_bt_valid" Content="Valid" Click="mw_bt_valid_Click"/>
-            <Button x:Name="mw_bt_newGame" Content="New Game" Click="mw_bt_newGame_Click"/>
+            <StackPanel x:Name="Logo" Height="80" d:IsLocked="True">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="{DynamicResource violetPale}"/>
+                </StackPanel.Background>
+                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Le chiffre" FontSize="36" TextAlignment="Right" Margin="0,23,15,0">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{DynamicResource blanc}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <Rectangle x:Name="SeparateurBlanc" Height="5" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,-13,0,0">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="{DynamicResource blanc}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle x:Name="SeparateurJaune" Height="15" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,-5,0,0">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="{DynamicResource jaune}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </StackPanel>
+            <Grid x:Name="mw_grid_pitch" Margin="15,0,0,0" Height="48">
+                <TextBlock x:Name="mw_tbx_pitch1" TextWrapping="Wrap" Text="J'ai choisi un nombre entre 1 et 20..." VerticalAlignment="Top" FontSize="16">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{DynamicResource blanc}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <TextBlock x:Name="mw_tbx_pitch2" TextWrapping="Wrap" Text="Trouve-le !" VerticalAlignment="Bottom" FontSize="18">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{DynamicResource blanc}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </Grid>
+            <Grid x:Name="mw_grid_number" Height="140" Background="#FFBDBDBD">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="259"/>
+                    <ColumnDefinition Width="260"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="mw_sp_info" VerticalAlignment="Center">
+                    <TextBlock x:Name="mw_tbk_result" TextWrapping="Wrap" Text="" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="24" >
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{DynamicResource blanc}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock x:Name="mw_tbx_tries" TextWrapping="Wrap" Text="Nombre d'essai : " FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" FontSize="24">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{DynamicResource blanc}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+                <Ellipse Opacity="0.25" Grid.Column="1" Width="140" Fill="White" HorizontalAlignment="Left" Margin="15,3,0,3"/>
+                <TextBox x:Name="mw_tbx_input" TextWrapping="Wrap" Text="" Grid.Column="1" Background="{x:Null}" FontWeight="Bold" FontSize="70" RenderTransformOrigin="0.516,0.376" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextAlignment="Center" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0" Width="100" MaxHeight="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="37,0,0,25">
+                    <TextBox.Foreground>
+                        <SolidColorBrush Color="{DynamicResource blanc}"/>
+                    </TextBox.Foreground>
+                </TextBox>
+            </Grid>
+            <Button x:Name="mw_bt_valid" Content="Valid" Click="mw_bt_valid_Click" Height="90" BorderBrush="{x:Null}" Style="{DynamicResource tpl_bt_valid}" FontSize="16" FontWeight="Bold">
+                <Button.Foreground>
+                    <SolidColorBrush Color="{DynamicResource violetPale}"/>
+                </Button.Foreground>
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource violetPale}"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="mw_bt_newGame" Content="New Game" Click="mw_bt_newGame_Click" Style="{DynamicResource tpl_bt_newGame}" Height="90" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="18">
+                <Button.Foreground>
+                    <SolidColorBrush Color="{DynamicResource jaune}"/>
+                </Button.Foreground>
+            </Button>
         </StackPanel>
 
     </Grid>
