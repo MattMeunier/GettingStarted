@@ -27,7 +27,6 @@ namespace NombreMystereWPF
         int iterator;
         int num;
         int inputOut;
-        bool verify = true;
 
         public MainWindow()
         {
@@ -74,11 +73,13 @@ namespace NombreMystereWPF
 
         private bool verifyInput(string input)
         {
+            bool verify = true;
             if (int.TryParse(input, out inputOut) == false || inputOut > 20 || inputOut < 0)
             {
                 verify = false;
                 mw_tbk_result.Text = wrongInput;
             }
+
             return verify;
         }
 
